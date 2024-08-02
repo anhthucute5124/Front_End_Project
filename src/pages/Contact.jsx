@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* eslint-disable */
+=======
+/* eslint-disable*/
+>>>>>>> 2e9d0795a0aa427842ac59800a19001fb99d781b
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -49,8 +53,13 @@ function Contact() {
     }
     if (!formData.email) {
       newErrors.email = "Email là bắt buộc";
+<<<<<<< HEAD
     } else if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(formData.email)) {
       newErrors.email = "Email phải kết thúc bằng @gmail.com";
+=======
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email không hợp lệ";
+>>>>>>> 2e9d0795a0aa427842ac59800a19001fb99d781b
     }
     if (!formData.phone) {
       newErrors.phone = "Số điện thoại là bắt buộc";
@@ -74,6 +83,7 @@ function Contact() {
       return;
     }
 
+<<<<<<< HEAD
     try {
       const response = await fetch(
         "https://backend.codingfs.com/api/contacts",
@@ -101,6 +111,20 @@ function Contact() {
     } catch (error) {
       console.error("Error submitting form:", error);
       notyf.error("Có lỗi xảy ra, vui lòng thử lại sau.");
+=======
+    const response = await fetch("https://backend.codingfs.com/api/contacts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("Yêu cầu của bạn đã được gửi thành công!");
+    } else {
+      alert("Có lỗi xảy ra, vui lòng thử lại sau.");
+>>>>>>> 2e9d0795a0aa427842ac59800a19001fb99d781b
     }
   };
 
