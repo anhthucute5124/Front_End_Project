@@ -13,7 +13,7 @@ import Modal from "react-bootstrap/Modal";
 function Header() {
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
-  const [search,setSearch]= useState('');
+  const [search, setSearch] = useState("");
   const [show, setShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const notyf = new Notyf({
@@ -55,17 +55,17 @@ function Header() {
       },
     ],
   });
-  const changeSearch=(item)=>{
+  const changeSearch = (item) => {
     var result = generateSlug(item);
     setSearch(result);
-  }
+  };
   function generateSlug(text) {
     return text
-      .toString()                       
-      .toLowerCase()                    
-      .trim()                           
-      .replace(/\s+/g, '-')             
-      .replace(/\-\-+/g, '-');
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/\-\-+/g, "-");
   }
   const logout = () => {
     localStorage.clear();
@@ -86,8 +86,9 @@ function Header() {
   };
   const { collections, loading1 } = useSelector((state) => state.collections);
   const { brands, loading } = useSelector((state) => state.brands);
-  const { postCollections, loading2, error } = useSelector((state) => state.postCollections);
-
+  const { postCollections, loading2, error } = useSelector(
+    (state) => state.postCollections
+  );
 
   useEffect(() => {
     dispatch(getCollection());
@@ -128,7 +129,11 @@ function Header() {
         </Modal>
         <nav className="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
           <a className="navbar-brand d-none d-xl-inline" href="/">
-            <img src="/assets/images/codevui_shop.png" className="logo-img" alt="" />
+            <img
+              src="/assets/images/codevui_shop.png"
+              className="logo-img"
+              alt=""
+            />
           </a>
           <a
             className="mobile-menu-btn d-inline d-xl-none"
@@ -149,7 +154,7 @@ function Header() {
             <div className="offcanvas-header">
               <div className="offcanvas-logo">
                 <img
-                  src="/assets/images/logo.webp"
+                  src="/assets/images/codevui_shop.png"
                   className="logo-img"
                   alt=""
                 />
@@ -177,7 +182,7 @@ function Header() {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/dich-vu">
-                   Dịch vụ
+                    Dịch vụ
                   </a>
                 </li>
                 <li className="nav-item dropdown">
@@ -297,14 +302,11 @@ function Header() {
                     Tin tức
                   </a>
                   <ul className="dropdown-menu">
-                  <li>
-                          <a
-                            className="dropdown-item"
-                            href={"/tin-tuc"}
-                          >
-                            Tin tức
-                          </a>
-                        </li>
+                    <li>
+                      <a className="dropdown-item" href={"/tin-tuc"}>
+                        Tin tức
+                      </a>
+                    </li>
                     {postCollections &&
                       postCollections.map((item, index) => (
                         <li>
